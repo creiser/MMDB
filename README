@@ -1,0 +1,54 @@
+
+Installation instructions tested on the Oracle Developer VM
+(DeveloperDaysVM2017-03-02_12.ova):
+
+Make sure that the MMDB folder resides in /home/oracle so that this
+README file is located at /home/oracle/MMDB/README
+
+Frist try to run the fully automated install script by opening
+a terminal in the MMDB directory:
+
+cd /home/oracle/MMDB
+chmod a+x ./install_and_run.sh
+./install_and_run.sh
+
+Once this script is finished you can open a browser and navigate to http://localhost:12345
+
+However, if this fails for some reason you can try the step-by-step guide from below, maybe
+you have to change some settings regarding your specific database configuration.
+
+In the Oracle Developer VM there are two database users you are going to need:
+
+Username: SYSTEM
+Password: oracle
+
+Username: HR
+Password: oracle
+
+Compile with Oracle dependencies:
+javac -cp "./lib/oracle/*" LuceneIndexer.java StoredContext.java
+
+Load classes into the database with password "oracle":
+loadjava -user HR/oracle StoredContext.class LuceneIndexer.class 
+
+Compile LuceneIndexerWrapper with LIRE dependencies:
+javac -cp "./lib/lire/*" LuceneIndexerWrapper.java
+
+You can use the GUI tool Oracle SQL Developer to execute the following SQL commands.
+Execute admin.sql as SYSTEM user
+Execute setup.sql as HR user
+
+Upload corel10k to database and create index afterwards:
+javac -cp "./lib/oracle/*" UploadCorel.java
+java -cp ".:./lib/oracle/*" UploadCorel
+
+When the upload is complete, this will also create the index, which may take a couple
+of minutes.
+
+Compile and run the front end, this will launch a webserver on port 12345
+javac -cp "./lib/frontend/*:./lib/oracle/ojdbc8_g.jar" FrontEnd.java
+java -cp ".:./lib/frontend/*:./lib/oracle/ojdbc8_g.jar" FrontEnd 12345
+
+Use your browser to navigate to http://localhost:12345
+
+

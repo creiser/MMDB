@@ -1,0 +1,4 @@
+DROP INDEX ImagesIndex FORCE;
+DROP TABLE Images;
+DROP INDEXTYPE LuceneIndex;
+

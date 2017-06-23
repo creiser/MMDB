@@ -198,6 +198,8 @@ public class FrontEnd
 				conn.close();
 			} catch (Exception e) {
 				e.printStackTrace();
+				out.println("<div class='row'><h4>Unable to establish a connection to the database :(</h4></div>");
+
 			}
 
 

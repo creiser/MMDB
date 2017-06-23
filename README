@@ -5,7 +5,7 @@ Installation instructions tested on the Oracle Developer VM
 Make sure that the MMDB folder resides in /home/oracle so that this
 README file is located at /home/oracle/MMDB/README
 
-Frist try to run the fully automated install script by opening
+First try to run the fully automated install script by opening
 a terminal in the MMDB directory:
 
 cd /home/oracle/MMDB

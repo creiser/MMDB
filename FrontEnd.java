@@ -72,22 +72,31 @@ public class FrontEnd
 		        "    <div class=\"row\">\n" +
 		        "\n" +
 		        "        <form enctype=\"multipart/form-data\" method=\"post\" name=\"fileinfo\">\n" +
-		        "\n" +
-		        "            <div class=\"file-field input-field\">\n" +
-		        "                <div class=\"btn\">\n" +
-		        "                    <span> Upload Image</span>\n" +
-		        "                    <input type=\"file\" name=\"file\" required>\n" +
-		        "                </div>\n" +
-		        "                <div class=\"file-path-wrapper\">\n" +
-		        "                    <input class=\"file-path validate\" type=\"text\" placeholder=\"Upload the reference image..\">\n" +
-		        "                </div>\n" +
-		        "                <div>\n" +
-		        "                    <button class=\"btn waves-effect waves-light\" type=\"submit\">Search\n" +
-		        "                    </button>\n" +
-		        "                </div>\n" +
-		        "            </div>\n" +
-		        "\n" +
-		        "        </form>\n" +
+                "\n" +
+                "            <div class=\"file-field input-field\">\n" +
+                "                <div class=\"btn\">\n" +
+                "                    <span> Upload Image</span>\n" +
+                "                    <input type=\"file\" name=\"file\" onchange=\"readURL(this);\" required>\n" +
+                "                </div>\n" +
+                "                <div class=\"file-path-wrapper\">\n" +
+                "                    <input class=\"file-path validate\" type=\"text\" placeholder=\"Upload one or more files\">\n" +
+                "                </div>\n" +
+                "\n" +
+                "            </div>\n" +
+                "            <div class=\"row\">\n" +
+                "\n" +
+                "                <div class=\"col s2\">\n" +
+                "                    <div>\n" +
+                "                        <button class=\"btn waves-effect waves-light\" type=\"submit\">Search\n" +
+                "                        </button>\n" +
+                "                    </div>\n" +
+                "                </div>\n" +
+                "                <div class=\"col s10\">\n" +
+                "                    <img id=\"blah\" style='border-radius: 10px;' />\n" +
+                "                </div>\n" +
+                "            </div>\n" +
+                "\n" +
+                "        </form>\n" +
 		        "    </div>\n" +
 		        "\n" +
 		        "    <div id=\"results\" class=\"row\">\n" +
@@ -98,6 +107,22 @@ public class FrontEnd
 		        "</div>\n" +
 		        "\n" +
 		        "\n" +
+                    "<script>\n" +
+                    "    function readURL(input) {\n" +
+                    "        if (input.files && input.files[0]) {\n" +
+                    "            var reader = new FileReader();\n" +
+                    "\n" +
+                    "            reader.onload = function (e) {\n" +
+                    "                $('#blah')\n" +
+                    "                    .attr('src', e.target.result)\n" +
+                    "                    .width(150)\n" +
+                    "                    .height(150);\n" +
+                    "            };\n" +
+                    "            reader.readAsDataURL(input.files[0]);\n" +
+                    "        }\n" +
+                    "    }\n" +
+                    "</script>\n" +
+                    "\n" +
 		        "<script>\n" +
 		        "    var form = document.forms.namedItem(\"fileinfo\");\n" +
 		        "    form.addEventListener('submit', function (ev) {\n" +

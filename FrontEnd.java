@@ -76,10 +76,10 @@ public class FrontEnd
                 "            <div class=\"file-field input-field\">\n" +
                 "                <div class=\"btn\">\n" +
                 "                    <span> Upload Image</span>\n" +
-                "                    <input type=\"file\" name=\"file\" onchange=\"readURL(this);\" required>\n" +
+                "                    <input type=\"file\" name=\"file\" id=\"image1\" onchange=\"readURL(this);\" required>\n" +
                 "                </div>\n" +
                 "                <div class=\"file-path-wrapper\">\n" +
-                "                    <input class=\"file-path validate\" type=\"text\" placeholder=\"Upload one or more files\">\n" +
+                "                    <input class=\"file-path validate\" id=\"place\" type=\"text\" placeholder=\"Upload one or more files\">\n" +
                 "                </div>\n" +
                 "\n" +
                 "            </div>\n" +
@@ -119,6 +119,7 @@ public class FrontEnd
                     "                    .height(150);\n" +
                     "            };\n" +
                     "            reader.readAsDataURL(input.files[0]);\n" +
+                    "			 document.getElementById(\"place\").setAttribute(\"placeholder\", document.getElementById(\"image1\").files[0].name);"+
                     "        }\n" +
                     "    }\n" +
                     "</script>\n" +

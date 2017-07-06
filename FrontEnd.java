@@ -119,7 +119,7 @@ public class FrontEnd
                     "                    .height(150);\n" +
                     "            };\n" +
                     "            reader.readAsDataURL(input.files[0]);\n" +
-                    "			 document.getElementById(\"place\").setAttribute(\"placeholder\", document.getElementById(\"image1\").files[0].name);"+
+                    "			 document.getElementById(\"place\").setAttribute(\"value\", document.getElementById(\"image1\").files[0].name);"+
                     "        }\n" +
                     "    }\n" +
                     "</script>\n" +

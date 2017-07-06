@@ -72,31 +72,31 @@ public class FrontEnd
 		        "    <div class=\"row\">\n" +
 		        "\n" +
 		        "        <form enctype=\"multipart/form-data\" method=\"post\" name=\"fileinfo\">\n" +
-                "\n" +
-                "            <div class=\"file-field input-field\">\n" +
-                "                <div class=\"btn\">\n" +
-                "                    <span> Upload Image</span>\n" +
-                "                    <input type=\"file\" name=\"file\" id=\"image1\" onchange=\"readURL(this);\" required>\n" +
-                "                </div>\n" +
-                "                <div class=\"file-path-wrapper\">\n" +
-                "                    <input class=\"file-path validate\" id=\"place\" type=\"text\" placeholder=\"Upload one or more files\">\n" +
-                "                </div>\n" +
-                "\n" +
-                "            </div>\n" +
-                "            <div class=\"row\">\n" +
-                "\n" +
-                "                <div class=\"col s2\">\n" +
-                "                    <div>\n" +
-                "                        <button class=\"btn waves-effect waves-light\" type=\"submit\">Search\n" +
-                "                        </button>\n" +
-                "                    </div>\n" +
-                "                </div>\n" +
-                "                <div class=\"col s10\">\n" +
-                "                    <img id=\"blah\" style='border-radius: 10px;' />\n" +
-                "                </div>\n" +
-                "            </div>\n" +
-                "\n" +
-                "        </form>\n" +
+		        "\n" +
+		        "            <div class=\"file-field input-field\">\n" +
+		        "                <div class=\"btn\">\n" +
+		        "                    <span> Upload Image</span>\n" +
+		        "                    <input type=\"file\" name=\"file\" id=\"image1\" onchange=\"readURL(this);\" required>\n" +
+		        "                </div>\n" +
+		        "                <div class=\"file-path-wrapper\">\n" +
+		        "                    <input class=\"file-path validate\" id=\"place\" type=\"text\" placeholder=\"Upload a reference image..\">\n" +
+		        "                </div>\n" +
+		        "\n" +
+		        "            </div>\n" +
+		        "            <div class=\"row\">\n" +
+		        "\n" +
+		        "                <div class=\"col s2\">\n" +
+		        "                    <div>\n" +
+		        "                        <button class=\"btn waves-effect waves-light\" type=\"submit\">Search\n" +
+		        "                        </button>\n" +
+		        "                    </div>\n" +
+		        "                </div>\n" +
+		        "                <div class=\"col s10\">\n" +
+		        "                    <img id=\"blah\" style='border-radius: 10px;' />\n" +
+		        "                </div>\n" +
+		        "            </div>\n" +
+		        "\n" +
+		        "        </form>\n" +
 		        "    </div>\n" +
 		        "\n" +
 		        "    <div id=\"results\" class=\"row\">\n" +
@@ -107,23 +107,23 @@ public class FrontEnd
 		        "</div>\n" +
 		        "\n" +
 		        "\n" +
-                    "<script>\n" +
-                    "    function readURL(input) {\n" +
-                    "        if (input.files && input.files[0]) {\n" +
-                    "            var reader = new FileReader();\n" +
-                    "\n" +
-                    "            reader.onload = function (e) {\n" +
-                    "                $('#blah')\n" +
-                    "                    .attr('src', e.target.result)\n" +
-                    "                    .width(150)\n" +
-                    "                    .height(150);\n" +
-                    "            };\n" +
-                    "            reader.readAsDataURL(input.files[0]);\n" +
-                    "			 document.getElementById(\"place\").setAttribute(\"value\", document.getElementById(\"image1\").files[0].name);"+
-                    "        }\n" +
-                    "    }\n" +
-                    "</script>\n" +
-                    "\n" +
+			"<script>\n" +
+			"    function readURL(input) {\n" +
+			"        if (input.files && input.files[0]) {\n" +
+			"            var reader = new FileReader();\n" +
+			"\n" +
+			"            reader.onload = function (e) {\n" +
+			"                $('#blah')\n" +
+			"                    .attr('src', e.target.result)\n" +
+			"                    .width(150)\n" +
+			"                    .height(150);\n" +
+			"            };\n" +
+			"            reader.readAsDataURL(input.files[0]);\n" +
+			"			 document.getElementById(\"place\").setAttribute(\"value\", document.getElementById(\"image1\").files[0].name);"+
+			"        }\n" +
+			"    }\n" +
+			"</script>\n" +
+			"\n" +
 		        "<script>\n" +
 		        "    var form = document.forms.namedItem(\"fileinfo\");\n" +
 		        "    form.addEventListener('submit', function (ev) {\n" +
@@ -202,41 +202,6 @@ public class FrontEnd
 				out.println("<div class='row'><h4>Unable to establish a connection to the database :(</h4></div>");
 
 			}
-
-
-			/*out.println(uploadForm);
-
-			for (Part part: req.getParts())
-			{
-				byte[] uploadedImage = readAllBytes(part.getInputStream());
-				String base64image = Base64.getEncoder().encodeToString(uploadedImage);
-				out.println("Uploaded file:<br>");
-				out.println("<img src=\"data:image/jpeg;base64," + base64image + "\"><br>");
-				out.println("Similar images:<br>");
-				
-				try {
-					Connection conn = DriverManager.getConnection("jdbc:oracle:thin:hr/oracle@localhost:1521/orcl");
-					PreparedStatement stmt = conn.prepareStatement("SELECT image FROM images WHERE is_lucene_similar(image, ?) = 1");
-					stmt.setBytes(1, uploadedImage);
-					ResultSet rs = stmt.executeQuery();
-					
-					int counter = 0;
-					while (rs.next()) {
-						base64image = Base64.getEncoder().encodeToString(rs.getBytes(1));
-						out.println("<img src=\"data:image/jpeg;base64," + base64image + "\">");
-						counter++;
-						if (counter == 4) {
-							out.println("<br>");
-							counter = 0;
-						}	
-					}
-
-					rs.close();
-					conn.close();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}*/
 		}
 	}
 }
